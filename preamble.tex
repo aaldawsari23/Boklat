@@ -1,0 +1,213 @@
+% =============================================================================
+% رفيق الرعاية — تنسيق احترافي أكاديمي B5
+% =============================================================================
+
+% === الصفحة B5 ===
+\usepackage[
+  b5paper,
+  top=22mm,
+  bottom=22mm,
+  inner=22mm,
+  outer=18mm,
+  headheight=14pt,
+  headsep=8mm,
+  footskip=10mm
+]{geometry}
+
+% === الألوان ===
+\usepackage{xcolor}
+\definecolor{chaptercolor}{RGB}{25,55,85}
+\definecolor{sectioncolor}{RGB}{35,70,105}
+\definecolor{accentcolor}{RGB}{60,90,120}
+
+% === الرسومات والجداول ===
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
+\renewcommand{\arraystretch}{1.35}
+
+% === تنسيق الفصول ===
+\usepackage{titlesec}
+\usepackage{titletoc}
+
+\titleformat{\chapter}[display]
+  {\normalfont\centering}
+  {\vspace*{1cm}\textcolor{chaptercolor}{\fontsize{48}{56}\selectfont\bfseries\arabic{chapter}}}
+  {0pt}
+  {\vspace{0.6cm}\fontsize{20}{26}\selectfont\bfseries\textcolor{chaptercolor}}
+  [\vspace{0.4cm}\textcolor{accentcolor}{\rule{0.25\textwidth}{0.8pt}}\vspace{0.8cm}]
+\titlespacing*{\chapter}{0pt}{0pt}{30pt}
+
+% العناوين الثانوية
+\titleformat{\section}
+  {\normalfont\fontsize{15}{19}\selectfont\bfseries\color{sectioncolor}}
+  {}
+  {0pt}
+  {}
+\titlespacing*{\section}{0pt}{20pt plus 3pt minus 2pt}{12pt plus 2pt minus 1pt}
+
+% العناوين الفرعية
+\titleformat{\subsection}
+  {\normalfont\fontsize{13}{16}\selectfont\bfseries}
+  {}
+  {0pt}
+  {}
+\titlespacing*{\subsection}{0pt}{16pt plus 2pt minus 1pt}{8pt plus 1pt minus 1pt}
+
+% === الترويسات ===
+\usepackage{fancyhdr}
+
+% === الروابط ===
+\usepackage[
+  unicode=true,
+  pdfencoding=auto,
+  hidelinks,
+  bookmarks=true,
+  bookmarksnumbered=true,
+  bookmarksopen=true,
+  pdftitle={رفيق الرعاية: العلاج الطبيعي لكبار السن في المنزل},
+  pdfauthor={عبدالكريم بن محمد الدوسري}
+]{hyperref}
+\usepackage{bookmark}
+
+% === اللغة العربية ===
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage[numerals=maghrib]{arabic}
+\setotherlanguage{english}
+
+\newfontfamily\arabicfont[Script=Arabic,Scale=1.0]{Amiri}
+\setmainfont[Script=Arabic,Scale=1.0]{Amiri}
+\newfontfamily\englishfont{TeX Gyre Termes}
+
+% === تنسيق الفقرات ===
+\emergencystretch=3em
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\parindent}{0pt}
+\linespread{1.3}
+
+\widowpenalty=10000
+\clubpenalty=10000
+\raggedbottom
+
+% === تنسيق القوائم ===
+\usepackage{enumitem}
+\setlist[itemize]{
+  itemsep=4pt,
+  parsep=2pt,
+  topsep=8pt,
+  partopsep=2pt,
+  leftmargin=*,
+  label={\textcolor{accentcolor}{•}}
+}
+\setlist[enumerate]{
+  itemsep=4pt,
+  parsep=2pt,
+  topsep=8pt,
+  partopsep=2pt,
+  leftmargin=*
+}
+
+% === الترويسات والتذييلات ===
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\small\nouppercase{\leftmark}}
+\fancyhead[LO]{\small\nouppercase{\rightmark}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+% === أوامر مساعدة ===
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{4pt}\setlength{\parskip}{2pt}}
+
+% خط فاصل
+\newcommand{\sectionbreak}{%
+  \vspace{12pt}%
+  \noindent\hfil\textcolor{accentcolor}{\rule{0.2\textwidth}{0.4pt}}\hfil%
+  \vspace{12pt}%
+}
+
+% === الصناديق المميزة ===
+\usepackage{mdframed}
+
+% ألوان الصناديق
+\definecolor{storycolor}{RGB}{245,245,250}
+\definecolor{storyborder}{RGB}{100,120,150}
+\definecolor{tipcolor}{RGB}{240,248,245}
+\definecolor{tipborder}{RGB}{60,140,100}
+\definecolor{warncolor}{RGB}{255,248,240}
+\definecolor{warnborder}{RGB}{200,120,60}
+\definecolor{scenariocolor}{RGB}{250,250,255}
+\definecolor{scenarioborder}{RGB}{80,100,140}
+
+% صندوق بسيط للملاحظات
+\newmdenv[
+  linecolor=accentcolor,
+  linewidth=1.5pt,
+  leftline=true,
+  rightline=false,
+  topline=false,
+  bottomline=false,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=8pt,
+  innerbottommargin=8pt,
+  skipabove=10pt,
+  skipbelow=10pt
+]{notebox}
+
+% بيئات بسيطة للصناديق (بدون خلفية ملونة لتجنب مشاكل العربية)
+\newenvironment{storybox}{%
+  \vspace{10pt}%
+  \noindent\hspace{0pt}%
+  \begin{minipage}[t]{0.95\linewidth}%
+  \textcolor{storyborder}{\rule[-2pt]{3pt}{1.2em}}\hspace{8pt}%
+}{%
+  \end{minipage}%
+  \vspace{10pt}%
+}
+
+\newenvironment{tipbox}{%
+  \vspace{10pt}%
+  \noindent\hspace{0pt}%
+  \begin{minipage}[t]{0.95\linewidth}%
+  \textcolor{tipborder}{\rule[-2pt]{3pt}{1.2em}}\hspace{8pt}%
+}{%
+  \end{minipage}%
+  \vspace{10pt}%
+}
+
+\newenvironment{warnbox}{%
+  \vspace{10pt}%
+  \noindent\hspace{0pt}%
+  \begin{minipage}[t]{0.95\linewidth}%
+  \textcolor{warnborder}{\rule[-2pt]{3pt}{1.2em}}\hspace{8pt}%
+}{%
+  \end{minipage}%
+  \vspace{10pt}%
+}
+
+\newenvironment{scenariobox}{%
+  \vspace{8pt}%
+  \noindent\hspace{0pt}%
+  \begin{minipage}[t]{0.95\linewidth}%
+  \textcolor{scenarioborder}{\rule[-2pt]{3pt}{1.2em}}\hspace{8pt}%
+}{%
+  \end{minipage}%
+  \vspace{8pt}%
+}
+
+% تنسيق الجداول
+\usepackage{colortbl}
+\newcommand{\tableheadercolor}{\rowcolor{chaptercolor!15}}
+\renewcommand{\arraystretch}{1.4}
