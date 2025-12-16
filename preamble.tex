@@ -1,146 +1,302 @@
 % =============================================================================
-% رفيق الرعاية — تنسيق احترافي أكاديمي B5
+% رفيق الرعاية — تنسيق احترافي احترافي B5 بجودة النشر
+% Publisher Quality Professional Preamble
 % =============================================================================
 
-% === الصفحة B5 ===
+% ═══════════════════════════════════════════════════════════════════════════
+% 1. PAPER SIZE & GEOMETRY — B5 with Golden Ratio Margins
+% ═══════════════════════════════════════════════════════════════════════════
 \usepackage[
-  b5paper,
-  top=22mm,
-  bottom=22mm,
-  inner=22mm,
-  outer=18mm,
-  headheight=14pt,
-  headsep=8mm,
-  footskip=10mm
+  b5paper,                    % B5 format (176 x 250 mm)
+  top=25mm,                   % Top margin
+  bottom=25mm,                % Bottom margin
+  inner=25mm,                 % Inner margin (binding side)
+  outer=20mm,                 % Outer margin (slightly smaller - golden ratio inspired)
+  headheight=14pt,            % Header height
+  headsep=8mm,                % Space between header and text
+  footskip=10mm,              % Space for footer
+  marginparwidth=15mm,        % Margin notes width
+  marginparsep=3mm            % Space to margin notes
 ]{geometry}
 
-% === الألوان ===
-\usepackage{xcolor}
-\definecolor{chaptercolor}{RGB}{25,55,85}
-\definecolor{sectioncolor}{RGB}{35,70,105}
-\definecolor{accentcolor}{RGB}{60,90,120}
+% ═══════════════════════════════════════════════════════════════════════════
+% 2. MICROTYPE — Professional Microtypography (CRITICAL FOR QUALITY)
+% ═══════════════════════════════════════════════════════════════════════════
+% Note: microtype has limited support for RTL, but we enable what works
+\usepackage[
+  activate={true,nocompatibility},  % Activate protrusion and expansion
+  final,                            % Enable in final mode
+  tracking=false,                   % Disable tracking (spacing issues with Arabic)
+  kerning=false,                    % Disable kerning (not needed for Arabic)
+  spacing=true,                     % Enable spacing adjustments
+  factor=1100,                      % Protrusion factor (110%)
+  stretch=20,                       % Font expansion: stretch by 2%
+  shrink=20                         % Font expansion: shrink by 2% (helps fitting)
+]{microtype}
 
-% === الرسومات والجداول ===
+% Fine-tune microtype settings for better paragraph fitting
+\microtypecontext{spacing=nonfrench}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% 3. COLORS — Professional Color Palette
+% ═══════════════════════════════════════════════════════════════════════════
+\usepackage{xcolor}
+\definecolor{chaptercolor}{RGB}{25,55,85}       % Deep blue for chapters
+\definecolor{sectioncolor}{RGB}{35,70,105}      % Medium blue for sections
+\definecolor{accentcolor}{RGB}{60,90,120}       % Accent color
+\definecolor{rulecolor}{RGB}{100,120,140}       % Decorative rules
+
+% ═══════════════════════════════════════════════════════════════════════════
+% 4. FONTS & TYPOGRAPHY — Professional RTL Arabic Setup
+% ═══════════════════════════════════════════════════════════════════════════
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage[numerals=maghrib]{arabic}
+\setotherlanguage{english}
+
+% Amiri is an excellent choice for professional Arabic typography
+% Scale optimized for B5 readability
+\newfontfamily\arabicfont[
+  Script=Arabic,
+  Scale=1.05,                       % Slightly larger for better readability
+  Ligatures=TeX,
+  Mapping=arabicdigits
+]{Amiri}
+
+\setmainfont[
+  Script=Arabic,
+  Scale=1.05,
+  Ligatures=TeX,
+  Mapping=arabicdigits
+]{Amiri}
+
+\newfontfamily\englishfont[
+  Ligatures=TeX,
+  Numbers=OldStyle
+]{TeX Gyre Termes}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% 5. PAGE BREAKING & PENALTIES — MAXIMUM QUALITY (CRITICAL!)
+% ═══════════════════════════════════════════════════════════════════════════
+
+% === Widow and Orphan Control (MAXIMUM PENALTIES) ===
+\widowpenalty=10000                 % Prevent widows (last line alone on new page)
+\clubpenalty=10000                  % Prevent orphans (first line alone at bottom)
+\brokenpenalty=10000                % Prevent broken words across pages
+
+% === Display Penalties (keep equations/lists together) ===
+\displaywidowpenalty=10000          % Widow penalty before display math
+\predisplaypenalty=10000            % Penalty before display environments
+\postdisplaypenalty=10000           % Penalty after display environments
+
+% === Paragraph Breaking Penalties ===
+\interlinepenalty=0                 % Allow breaks between lines (needed for flexibility)
+\hyphenpenalty=50                   % Low penalty for hyphenation (Arabic rarely needs this)
+\exhyphenpenalty=50                 % Explicit hyphen penalty
+
+% === Page Breaking Control ===
+\raggedbottom                       % Allow variable page heights (better than stretching)
+\sloppypar                          % Allow slightly looser spacing to avoid overfull boxes
+
+% === Emergency Stretch — Allow paragraphs to stretch/shrink ===
+\emergencystretch=3em               % Maximum emergency stretch (helps avoid overfull boxes)
+\tolerance=9999                     % Very high tolerance for line breaking
+\hbadness=9999                      % Don't warn about underfull hboxes
+\vbadness=9999                      % Don't warn about underfull vboxes
+
+% === Flexible Spacing for Better Page Breaks ===
+\setlength{\parskip}{7pt plus 3pt minus 2pt}    % Flexible paragraph spacing
+\setlength{\parindent}{0pt}                      % No paragraph indentation
+
+% === Line Spacing — Optimal for B5 Readability ===
+\linespread{1.18}                   % ~1.18 line spacing (optimal for B5 book)
+                                    % This equals approximately 1.3 with font expansion
+
+% === Flexible Vertical Spacing ===
+\setlength{\topskip}{10pt plus 2pt minus 2pt}
+\setlength{\parskip}{7pt plus 3pt minus 2pt}
+
+% === Prevent Page Breaks After Headings (Sticky Headings) ===
+\usepackage{needspace}              % For \needspace command
+
+% ═══════════════════════════════════════════════════════════════════════════
+% 6. ADVANCED SQUEEZE COMMANDS — Font Shrinking for Tight Fitting
+% ═══════════════════════════════════════════════════════════════════════════
+
+% Command to slightly shrink text to fit on previous page (use sparingly!)
+\newcommand{\squeezepage}{%
+  \enlargethispage{2\baselineskip}%           % Add 2 extra lines to page
+  \setlength{\parskip}{6pt plus 2pt minus 3pt}% Tighter paragraph spacing
+}
+
+% Command for maximum squeeze (emergency use only)
+\newcommand{\maxsqueeze}{%
+  \enlargethispage{3\baselineskip}%           % Add 3 extra lines
+  \setlength{\parskip}{5pt plus 1pt minus 3pt}% Very tight spacing
+  \linespread{1.12}\selectfont%               % Slightly tighter line spacing
+}
+
+% Restore normal spacing after squeeze
+\newcommand{\normalsqueeze}{%
+  \setlength{\parskip}{7pt plus 3pt minus 2pt}%
+  \linespread{1.18}\selectfont%
+}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% 7. CHAPTER & SECTION FORMATTING — Elegant Professional Design
+% ═══════════════════════════════════════════════════════════════════════════
+\usepackage{titlesec}
+\usepackage{titletoc}
+
+% === CHAPTER FORMAT — Elegant & Modern ===
+\titleformat{\chapter}[display]
+  {\normalfont\centering}
+  {% Chapter number
+    \vspace*{0.5cm}%
+    \textcolor{chaptercolor}{%
+      \fontsize{52}{60}\selectfont\bfseries\arabic{chapter}%
+    }%
+  }
+  {0pt}
+  {% Chapter title
+    \vspace{0.7cm}%
+    \fontsize{22}{28}\selectfont\bfseries\textcolor{chaptercolor}%
+  }
+  [% After chapter title
+    \vspace{0.5cm}%
+    \textcolor{rulecolor}{\rule{0.3\textwidth}{1pt}}%
+    \vspace{1cm}%
+  ]
+
+% Chapter spacing - prevent orphan chapters
+\titlespacing*{\chapter}
+  {0pt}                             % Left margin
+  {0pt}                             % Space before
+  {30pt plus 10pt minus 5pt}        % Space after (flexible)
+
+% === SECTION FORMAT — Clean & Professional ===
+\titleformat{\section}
+  {\normalfont\fontsize{16}{20}\selectfont\bfseries\color{sectioncolor}}
+  {}                                % No number prefix
+  {0pt}
+  {}                                % Section title
+  [\vspace{2pt}\textcolor{accentcolor}{\rule{0.15\textwidth}{0.5pt}}] % Underline
+
+\titlespacing*{\section}
+  {0pt}                             % Left margin
+  {22pt plus 4pt minus 3pt}         % Space before (flexible)
+  {14pt plus 3pt minus 2pt}         % Space after (flexible)
+
+% === SUBSECTION FORMAT — Subtle & Elegant ===
+\titleformat{\subsection}
+  {\normalfont\fontsize{14}{17}\selectfont\bfseries\color{black!85}}
+  {}
+  {0pt}
+  {}
+
+\titlespacing*{\subsection}
+  {0pt}
+  {18pt plus 3pt minus 2pt}         % Space before
+  {10pt plus 2pt minus 1pt}         % Space after
+
+% === Prevent Heading Orphans — CRITICAL ===
+% Never allow headings to appear alone at bottom of page
+\newcommand{\chapternobreak}{\needspace{8\baselineskip}}
+\newcommand{\sectionnobreak}{\needspace{4\baselineskip}}
+\newcommand{\subsectionnobreak}{\needspace{3\baselineskip}}
+
+% Automatically apply to all headings (hooks into titlesec)
+\let\oldchapter\chapter
+\renewcommand{\chapter}{\clearpage\chapternobreak\oldchapter}
+
+\let\oldsection\section
+\renewcommand{\section}{\sectionnobreak\oldsection}
+
+\let\oldsubsection\subsection
+\renewcommand{\subsection}{\subsectionnobreak\oldsubsection}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% 8. GRAPHICS & TABLES
+% ═══════════════════════════════════════════════════════════════════════════
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{array}
 \usepackage{tabularx}
 \usepackage{multirow}
-\renewcommand{\arraystretch}{1.35}
+\usepackage{colortbl}
 
-% === تنسيق الفصول ===
-\usepackage{titlesec}
-\usepackage{titletoc}
+% Table styling
+\renewcommand{\arraystretch}{1.4}
+\newcommand{\tableheadercolor}{\rowcolor{chaptercolor!15}}
 
-\titleformat{\chapter}[display]
-  {\normalfont\centering}
-  {\vspace*{1cm}\textcolor{chaptercolor}{\fontsize{48}{56}\selectfont\bfseries\arabic{chapter}}}
-  {0pt}
-  {\vspace{0.6cm}\fontsize{20}{26}\selectfont\bfseries\textcolor{chaptercolor}}
-  [\vspace{0.4cm}\textcolor{accentcolor}{\rule{0.25\textwidth}{0.8pt}}\vspace{0.8cm}]
-\titlespacing*{\chapter}{0pt}{0pt}{30pt}
-
-% العناوين الثانوية
-\titleformat{\section}
-  {\normalfont\fontsize{15}{19}\selectfont\bfseries\color{sectioncolor}}
-  {}
-  {0pt}
-  {}
-\titlespacing*{\section}{0pt}{20pt plus 3pt minus 2pt}{12pt plus 2pt minus 1pt}
-
-% العناوين الفرعية
-\titleformat{\subsection}
-  {\normalfont\fontsize{13}{16}\selectfont\bfseries}
-  {}
-  {0pt}
-  {}
-\titlespacing*{\subsection}{0pt}{16pt plus 2pt minus 1pt}{8pt plus 1pt minus 1pt}
-
-% === الترويسات ===
-\usepackage{fancyhdr}
-
-% === الروابط ===
-\usepackage[
-  unicode=true,
-  pdfencoding=auto,
-  hidelinks,
-  bookmarks=true,
-  bookmarksnumbered=true,
-  bookmarksopen=true,
-  pdftitle={رفيق الرعاية: العلاج الطبيعي لكبار السن في المنزل},
-  pdfauthor={عبدالكريم بن محمد الدوسري}
-]{hyperref}
-\usepackage{bookmark}
-
-% === اللغة العربية ===
-\usepackage{fontspec}
-\usepackage{polyglossia}
-\setmainlanguage[numerals=maghrib]{arabic}
-\setotherlanguage{english}
-
-\newfontfamily\arabicfont[Script=Arabic,Scale=1.0]{Amiri}
-\setmainfont[Script=Arabic,Scale=1.0]{Amiri}
-\newfontfamily\englishfont{TeX Gyre Termes}
-
-% === تنسيق الفقرات ===
-\emergencystretch=3em
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-\setlength{\parindent}{0pt}
-\linespread{1.3}
-
-\widowpenalty=10000
-\clubpenalty=10000
-\raggedbottom
-
-% === تنسيق القوائم ===
+% ═══════════════════════════════════════════════════════════════════════════
+% 9. LISTS — Professional Formatting
+% ═══════════════════════════════════════════════════════════════════════════
 \usepackage{enumitem}
+
 \setlist[itemize]{
-  itemsep=4pt,
+  itemsep=5pt plus 2pt minus 1pt,   % Flexible item spacing
   parsep=2pt,
-  topsep=8pt,
+  topsep=10pt plus 3pt minus 2pt,   % Flexible top spacing
   partopsep=2pt,
   leftmargin=*,
   label={\textcolor{accentcolor}{•}}
 }
+
 \setlist[enumerate]{
-  itemsep=4pt,
+  itemsep=5pt plus 2pt minus 1pt,
   parsep=2pt,
-  topsep=8pt,
+  topsep=10pt plus 3pt minus 2pt,
   partopsep=2pt,
   leftmargin=*
 }
 
-% === الترويسات والتذييلات ===
+% ═══════════════════════════════════════════════════════════════════════════
+% 10. HEADERS & FOOTERS — Professional Page Headers
+% ═══════════════════════════════════════════════════════════════════════════
+\usepackage{fancyhdr}
+
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE,RO]{\thepage}
-\fancyhead[RE]{\small\nouppercase{\leftmark}}
-\fancyhead[LO]{\small\nouppercase{\rightmark}}
-\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[LE,RO]{\small\bfseries\thepage}              % Page numbers
+\fancyhead[RE]{\small\nouppercase{\leftmark}}           % Chapter on even pages
+\fancyhead[LO]{\small\nouppercase{\rightmark}}          % Section on odd pages
+\renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0pt}
 
+% Plain style for chapter pages
 \fancypagestyle{plain}{
   \fancyhf{}
-  \fancyfoot[C]{\thepage}
+  \fancyfoot[C]{\small\thepage}
   \renewcommand{\headrulewidth}{0pt}
 }
 
-% === أوامر مساعدة ===
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{4pt}\setlength{\parskip}{2pt}}
+% ═══════════════════════════════════════════════════════════════════════════
+% 11. HYPERLINKS — PDF Metadata & Links
+% ═══════════════════════════════════════════════════════════════════════════
+\usepackage[
+  unicode=true,
+  pdfencoding=auto,
+  hidelinks,                        % No colored boxes around links
+  bookmarks=true,
+  bookmarksnumbered=true,
+  bookmarksopen=true,
+  pdftitle={رفيق الرعاية: العلاج الطبيعي لكبار السن في المنزل},
+  pdfauthor={عبدالكريم بن محمد الدوسري},
+  pdfsubject={العلاج الطبيعي لكبار السن},
+  pdfkeywords={علاج طبيعي، كبار السن، رعاية منزلية},
+  pdfproducer={XeLaTeX with Professional Publisher Quality Settings},
+  pdfcreator={LaTeX}
+]{hyperref}
+\usepackage{bookmark}
 
-% خط فاصل
-\newcommand{\sectionbreak}{%
-  \vspace{12pt}%
-  \noindent\hfil\textcolor{accentcolor}{\rule{0.2\textwidth}{0.4pt}}\hfil%
-  \vspace{12pt}%
-}
-
-% === الصناديق المميزة ===
+% ═══════════════════════════════════════════════════════════════════════════
+% 12. SPECIAL BOXES & ENVIRONMENTS
+% ═══════════════════════════════════════════════════════════════════════════
 \usepackage{mdframed}
 
-% ألوان الصناديق
+% Box colors
 \definecolor{storycolor}{RGB}{245,245,250}
 \definecolor{storyborder}{RGB}{100,120,150}
 \definecolor{tipcolor}{RGB}{240,248,245}
@@ -150,64 +306,105 @@
 \definecolor{scenariocolor}{RGB}{250,250,255}
 \definecolor{scenarioborder}{RGB}{80,100,140}
 
-% صندوق بسيط للملاحظات
+% Simple note box with left border
 \newmdenv[
   linecolor=accentcolor,
-  linewidth=1.5pt,
+  linewidth=2pt,
   leftline=true,
   rightline=false,
   topline=false,
   bottomline=false,
-  innerleftmargin=10pt,
-  innerrightmargin=10pt,
-  innertopmargin=8pt,
-  innerbottommargin=8pt,
-  skipabove=10pt,
-  skipbelow=10pt
+  innerleftmargin=12pt,
+  innerrightmargin=12pt,
+  innertopmargin=10pt,
+  innerbottommargin=10pt,
+  skipabove=12pt plus 3pt minus 2pt,
+  skipbelow=12pt plus 3pt minus 2pt
 ]{notebox}
 
-% بيئات بسيطة للصناديق (بدون خلفية ملونة لتجنب مشاكل العربية)
+% Story box environment
 \newenvironment{storybox}{%
-  \vspace{10pt}%
+  \par\vspace{12pt plus 3pt minus 2pt}%
   \noindent\hspace{0pt}%
   \begin{minipage}[t]{0.95\linewidth}%
-  \textcolor{storyborder}{\rule[-2pt]{3pt}{1.2em}}\hspace{8pt}%
+  \textcolor{storyborder}{\rule[-2pt]{4pt}{1.2em}}\hspace{10pt}%
 }{%
   \end{minipage}%
-  \vspace{10pt}%
+  \par\vspace{12pt plus 3pt minus 2pt}%
 }
 
+% Tip box environment
 \newenvironment{tipbox}{%
-  \vspace{10pt}%
+  \par\vspace{12pt plus 3pt minus 2pt}%
   \noindent\hspace{0pt}%
   \begin{minipage}[t]{0.95\linewidth}%
-  \textcolor{tipborder}{\rule[-2pt]{3pt}{1.2em}}\hspace{8pt}%
+  \textcolor{tipborder}{\rule[-2pt]{4pt}{1.2em}}\hspace{10pt}%
 }{%
   \end{minipage}%
-  \vspace{10pt}%
+  \par\vspace{12pt plus 3pt minus 2pt}%
 }
 
+% Warning box environment
 \newenvironment{warnbox}{%
-  \vspace{10pt}%
+  \par\vspace{12pt plus 3pt minus 2pt}%
   \noindent\hspace{0pt}%
   \begin{minipage}[t]{0.95\linewidth}%
-  \textcolor{warnborder}{\rule[-2pt]{3pt}{1.2em}}\hspace{8pt}%
+  \textcolor{warnborder}{\rule[-2pt]{4pt}{1.2em}}\hspace{10pt}%
 }{%
   \end{minipage}%
-  \vspace{10pt}%
+  \par\vspace{12pt plus 3pt minus 2pt}%
 }
 
+% Scenario box environment
 \newenvironment{scenariobox}{%
-  \vspace{8pt}%
+  \par\vspace{10pt plus 2pt minus 1pt}%
   \noindent\hspace{0pt}%
   \begin{minipage}[t]{0.95\linewidth}%
-  \textcolor{scenarioborder}{\rule[-2pt]{3pt}{1.2em}}\hspace{8pt}%
+  \textcolor{scenarioborder}{\rule[-2pt]{4pt}{1.2em}}\hspace{10pt}%
 }{%
   \end{minipage}%
-  \vspace{8pt}%
+  \par\vspace{10pt plus 2pt minus 1pt}%
 }
 
-% تنسيق الجداول
-\usepackage{colortbl}
-\newcommand{\tableheadercolor}{\rowcolor{chaptercolor!15}}
-\renewcommand{\arraystretch}{1.4}
+% ═══════════════════════════════════════════════════════════════════════════
+% 13. HELPER COMMANDS
+% ═══════════════════════════════════════════════════════════════════════════
+
+% Tight list for markdown compatibility
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{4pt}\setlength{\parskip}{2pt}%
+}
+
+% Decorative section break
+\newcommand{\sectionbreak}{%
+  \par\vspace{14pt plus 3pt minus 2pt}%
+  \noindent\hfil\textcolor{accentcolor}{\rule{0.25\textwidth}{0.5pt}}\hfil%
+  \par\vspace{14pt plus 3pt minus 2pt}%
+}
+
+% Visual separator
+\newcommand{\ornamentbreak}{%
+  \par\vspace{12pt}%
+  \noindent\hfil{\textcolor{accentcolor}{* * *}}\hfil%
+  \par\vspace{12pt}%
+}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% 14. FINAL OPTIMIZATION SETTINGS
+% ═══════════════════════════════════════════════════════════════════════════
+
+% Ensure proper RTL layout
+\setlength{\footnotemargin}{0.8em}
+
+% Optimize for XeLaTeX
+\XeTeXlinebreaklocale "ar"          % Arabic line breaking rules
+\XeTeXlinebreakskip = 0pt plus 1pt  % Allow some flexibility in line breaks
+
+% PDF compression for smaller file size
+\pdfcompresslevel=9
+\pdfobjcompresslevel=3
+
+% ═══════════════════════════════════════════════════════════════════════════
+% END OF PREAMBLE
+% Professional Publisher Quality B5 RTL Setup Complete
+% ═══════════════════════════════════════════════════════════════════════════
