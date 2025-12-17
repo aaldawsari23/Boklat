@@ -28,7 +28,7 @@
   final,                            % Enable in final mode
   tracking=false,                   % Disable tracking (spacing issues with Arabic)
   kerning=false,                    % Disable kerning (not needed for Arabic)
-  spacing=true,                     % Enable spacing adjustments
+  % spacing=true,                     % Enable spacing adjustments (disabled for LuaLaTeX)
   factor=1100,                      % Protrusion factor (110%)
   stretch=20,                       % Font expansion: stretch by 2%
   shrink=20                         % Font expansion: shrink by 2% (helps fitting)
@@ -50,29 +50,19 @@
 % 4. FONTS & TYPOGRAPHY — Professional RTL Arabic Setup
 % ═══════════════════════════════════════════════════════════════════════════
 \usepackage{fontspec}
-\usepackage{polyglossia}
-\setmainlanguage[numerals=maghrib]{arabic}
-\setotherlanguage{english}
+\usepackage[bidi=basic, layout=sectionsingroup]{babel}
+\babelprovide[import, main, mapdigits]{arabic}
+\babelprovide[import]{english}
 
 % Amiri is an excellent choice for professional Arabic typography
-% Scale optimized for B5 readability
-\newfontfamily\arabicfont[
-  Script=Arabic,
-  Scale=1.05,                       % Slightly larger for better readability
-  Ligatures=TeX,
-  Mapping=arabicdigits
-]{Amiri}
-
-\setmainfont[
-  Script=Arabic,
+\babelfont[arabic]{rm}[
   Scale=1.05,
-  Ligatures=TeX,
-  Mapping=arabicdigits
+  Renderer=Harfbuzz
 ]{Amiri}
 
-\newfontfamily\englishfont[
-  Ligatures=TeX,
-  Numbers=OldStyle
+\babelfont[english]{rm}[
+  Numbers=OldStyle,
+  Renderer=Harfbuzz
 ]{TeX Gyre Termes}
 
 % ═══════════════════════════════════════════════════════════════════════════
@@ -104,17 +94,17 @@
 \hbadness=9999                      % Don't warn about underfull hboxes
 \vbadness=9999                      % Don't warn about underfull vboxes
 
-% === Flexible Spacing for Better Page Breaks — COMPACT ===
-\setlength{\parskip}{5pt plus 2pt minus 1pt}    % Reduced paragraph spacing (was 7pt)
-\setlength{\parindent}{0pt}                      % No paragraph indentation
+% === Flexible Spacing for Better Page Breaks — PROFESSIONAL ===
+\setlength{\parskip}{6pt plus 2pt minus 1pt}    % Balanced paragraph spacing
+\setlength{\parindent}{1.5em}                    % Professional paragraph indent
 
-% === Line Spacing — Compact for B5 ===
-\linespread{1.15}                   % Reduced to 1.15 (was 1.18) for compactness
-                                    % Still maintains good readability
+% === Line Spacing — Professional for B5 ===
+\linespread{1.18}                   % Slightly increased for better readability
+                                    % Professional publishing standard
 
-% === Flexible Vertical Spacing — COMPACT ===
-\setlength{\topskip}{8pt plus 2pt minus 1pt}    % Reduced from 10pt
-\setlength{\parskip}{5pt plus 2pt minus 1pt}    % Reduced from 7pt
+% === Flexible Vertical Spacing — PROFESSIONAL ===
+\setlength{\topskip}{10pt plus 2pt minus 1pt}   % Standard top skip
+\setlength{\parskip}{6pt plus 2pt minus 1pt}    % Consistent paragraph spacing
 
 % === Prevent Page Breaks After Headings (Sticky Headings) ===
 \usepackage{needspace}              % For \needspace command
@@ -138,9 +128,15 @@
 
 % Restore normal spacing after squeeze
 \newcommand{\normalsqueeze}{%
-  \setlength{\parskip}{5pt plus 2pt minus 1pt}%  % Updated to match new default
-  \linespread{1.15}\selectfont%                   % Updated to match new default
+  \setlength{\parskip}{6pt plus 2pt minus 1pt}%  % Updated to match new default
+  \linespread{1.18}\selectfont%                   % Updated to match new default
 }
+
+% === First Paragraph After Heading - No Indent ===
+\usepackage{indentfirst}              % Indent first paragraph (Arabic standard)
+
+% === Drop Caps for Chapter Opening (Optional Enhancement) ===
+% \usepackage{lettrine}               % Uncomment for decorative first letters
 
 % ═══════════════════════════════════════════════════════════════════════════
 % 7. CHAPTER & SECTION FORMATTING — Elegant Professional Design
@@ -148,64 +144,61 @@
 \usepackage{titlesec}
 \usepackage{titletoc}
 
-% === CHAPTER FORMAT — Elegant & Compact ===
+% === CHAPTER FORMAT — Publisher Quality Opening Page ===
 \titleformat{\chapter}[display]
   {\normalfont\centering}
-  {% Chapter number
-    \vspace*{-10pt}%                 % Minimal top space (negative to compensate)
-    \textcolor{chaptercolor}{%
-      \fontsize{42}{48}\selectfont\bfseries\arabic{chapter}%  % Smaller number
+  {% Chapter number - elegant large number
+    \vspace*{2cm}%                   % Generous top space for chapter opening
+    \textcolor{chaptercolor!30}{%
+      \fontsize{72}{80}\selectfont\bfseries\arabic{chapter}%  % Large, light number
     }%
   }
   {0pt}
-  {% Chapter title
-    \vspace{0.3cm}%                  % Reduced from 0.7cm
-    \fontsize{20}{26}\selectfont\bfseries\textcolor{chaptercolor}%  % Slightly smaller
+  {% Chapter title - prominent and clear
+    \vspace{0.8cm}%                  % Good spacing after number
+    \fontsize{22}{28}\selectfont\bfseries\textcolor{chaptercolor}%  % Clear title
   }
-  [% After chapter title
-    \vspace{0.2cm}%                  % Reduced from 0.5cm
-    \textcolor{rulecolor}{\rule{0.25\textwidth}{0.8pt}}%  % Slightly thinner rule
-    \vspace{0.5cm}%                  % Reduced from 1cm
+  [% After chapter title - decorative element
+    \vspace{0.5cm}%
+    \textcolor{rulecolor}{\rule{0.3\textwidth}{1pt}}%  % Elegant rule
+    \vspace{1.2cm}%                  % Breathing room before content
   ]
 
-% Chapter spacing - prevent orphan chapters
+% Chapter spacing - professional opening page
 \titlespacing*{\chapter}
   {0pt}                             % Left margin
-  {-20pt}                           % Negative space before (pulls chapter up)
-  {20pt plus 8pt minus 3pt}         % Space after (reduced, flexible)
+  {0pt}                             % No extra space before (chapter starts fresh page)
+  {30pt plus 10pt minus 5pt}        % Space after - generous for opening
 
-% === SECTION FORMAT — Clean & Compact ===
+% === SECTION FORMAT — Clean Standard ===
 \titleformat{\section}
-  {\normalfont\fontsize{15}{19}\selectfont\bfseries\color{sectioncolor}}  % Slightly smaller
-  {}                                % No number prefix
+  {\normalfont\fontsize{15}{19}\selectfont\bfseries\color{sectioncolor}}
+  {}
   {0pt}
-  {}                                % Section title
-  [\vspace{1pt}\textcolor{accentcolor}{\rule{0.12\textwidth}{0.5pt}}] % Shorter underline
+  {}
 
 \titlespacing*{\section}
-  {0pt}                             % Left margin
-  {16pt plus 3pt minus 2pt}         % Space before (reduced from 22pt)
-  {10pt plus 2pt minus 1pt}         % Space after (reduced from 14pt)
+  {0pt}
+  {10pt plus 2pt minus 2pt}
+  {6pt plus 1pt minus 1pt}
 
-% === SUBSECTION FORMAT — Subtle & Compact ===
+% === SUBSECTION FORMAT — Clean Standard ===
 \titleformat{\subsection}
-  {\normalfont\fontsize{13}{16}\selectfont\bfseries\color{black!85}}  % Slightly smaller
+  {\normalfont\fontsize{13}{16}\selectfont\bfseries\color{black!85}}
   {}
   {0pt}
   {}
 
 \titlespacing*{\subsection}
   {0pt}
-  {14pt plus 2pt minus 1pt}         % Space before (reduced from 18pt)
-  {8pt plus 1pt minus 1pt}          % Space after (reduced from 10pt)
+  {8pt plus 2pt minus 2pt}
+  {4pt plus 1pt minus 1pt}
 
-% === Prevent Heading Orphans — CRITICAL ===
-% Never allow headings to appear alone at bottom of page
+% === Prevent Heading Orphans ===
 \newcommand{\chapternobreak}{\needspace{8\baselineskip}}
 \newcommand{\sectionnobreak}{\needspace{4\baselineskip}}
 \newcommand{\subsectionnobreak}{\needspace{3\baselineskip}}
 
-% Automatically apply to all headings (hooks into titlesec)
 \let\oldchapter\chapter
 \renewcommand{\chapter}{\clearpage\chapternobreak\oldchapter}
 
@@ -216,60 +209,29 @@
 \renewcommand{\subsection}{\subsectionnobreak\oldsubsection}
 
 % ═══════════════════════════════════════════════════════════════════════════
-% 8. GRAPHICS & TABLES — Professional & Compact
+% 8. GRAPHICS & TABLES — Standard
 % ═══════════════════════════════════════════════════════════════════════════
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{longtable}
+\usepackage{calc}
 \usepackage{array}
 \usepackage{tabularx}
 \usepackage{multirow}
 \usepackage{colortbl}
+\usepackage{amssymb}
 
-% Table styling - Compact & Professional
-\renewcommand{\arraystretch}{1.3}                    % Reduced from 1.4 for compactness
-\newcommand{\tableheadercolor}{\rowcolor{chaptercolor!12}}  % Lighter color
-
-% Better spacing in table rules
-\setlength{\aboverulesep}{0pt}
-\setlength{\belowrulesep}{0pt}
-\setlength{\extrarowheight}{3pt}                     % Add padding to rows
-
-% Column types for better RTL alignment
-\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}  % Right-aligned
-\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} % Left-aligned
-\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}   % Centered
-
-% Better table environment wrapper for compact tables
-\newenvironment{compacttable}
-  {\setlength{\extrarowheight}{2pt}\small}  % Smaller font, tight rows
-  {}
-
-% Helper for table headers with better spacing
-\newcommand{\thead}[1]{\textbf{#1}}         % Bold headers
+% Standard Table Settings
+\renewcommand{\arraystretch}{1.2}
 
 % ═══════════════════════════════════════════════════════════════════════════
-% 9. LISTS — Compact Professional Formatting
+% 9. LISTS — Standard
 % ═══════════════════════════════════════════════════════════════════════════
 \usepackage{enumitem}
-
-% Compact list settings for better space usage
-\setlist[itemize]{
-  itemsep=3pt plus 1pt minus 1pt,   % Tighter item spacing
-  parsep=1pt,
-  topsep=6pt plus 2pt minus 1pt,    % Reduced top spacing
-  partopsep=1pt,
-  leftmargin=*,
-  label={\textcolor{accentcolor}{•}}
-}
-
-\setlist[enumerate]{
-  itemsep=3pt plus 1pt minus 1pt,   % Tighter spacing
-  parsep=1pt,
-  topsep=6pt plus 2pt minus 1pt,    % Reduced top spacing
-  partopsep=1pt,
-  leftmargin=*
-}
+% Reset to mostly standard, just slightly tighter for B5
+\setlist{nosep} % Compact lists
+\setlist[itemize]{leftmargin=*}
+\setlist[enumerate]{leftmargin=*}
 
 % ═══════════════════════════════════════════════════════════════════════════
 % 10. HEADERS & FOOTERS — Professional Page Headers
@@ -278,16 +240,29 @@
 
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE,RO]{\small\bfseries\thepage}              % Page numbers
-\fancyhead[RE]{\small\nouppercase{\leftmark}}           % Chapter on even pages
-\fancyhead[LO]{\small\nouppercase{\rightmark}}          % Section on odd pages
+
+% In RTL Context (Arabic):
+% Even pages are on the RIGHT. Outer edge is RIGHT. Inner edge is LEFT.
+% Odd pages are on the LEFT. Outer edge is LEFT. Inner edge is RIGHT.
+
+% Page Numbers on Outer Edges:
+% RE (Right Even) -> Outer
+% LO (Left Odd)   -> Outer
+\fancyhead[RE,LO]{\small\bfseries\thepage}
+
+% Chapter/Section Info on Inner Edges:
+% LE (Left Even)  -> Inner -> Chapter
+% RO (Right Odd)  -> Inner -> Section
+\fancyhead[LE]{\small\nouppercase{\leftmark}}           % Chapter on even pages (Inner)
+\fancyhead[RO]{\small\nouppercase{\rightmark}}          % Section on odd pages (Inner)
+
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0pt}
 
 % Plain style for chapter pages
 \fancypagestyle{plain}{
   \fancyhf{}
-  \fancyfoot[C]{\small\thepage}
+  \fancyfoot[C]{\small\thepage} % Centered page number on chapter start pages is standard
   \renewcommand{\headrulewidth}{0pt}
 }
 
@@ -313,99 +288,75 @@
 % ═══════════════════════════════════════════════════════════════════════════
 % 12. SPECIAL BOXES & ENVIRONMENTS
 % ═══════════════════════════════════════════════════════════════════════════
-\usepackage{mdframed}
+% 12. SPECIAL BOXES & ENVIRONMENTS — SIMPLIFIED
+% ═══════════════════════════════════════════════════════════════════════════
 
-% Box colors
-\definecolor{storycolor}{RGB}{245,245,250}
-\definecolor{storyborder}{RGB}{100,120,150}
-\definecolor{tipcolor}{RGB}{240,248,245}
-\definecolor{tipborder}{RGB}{60,140,100}
-\definecolor{warncolor}{RGB}{255,248,240}
-\definecolor{warnborder}{RGB}{200,120,60}
-\definecolor{scenariocolor}{RGB}{250,250,255}
-\definecolor{scenarioborder}{RGB}{80,100,140}
+% Simple note box
+\newenvironment{notebox}{%
+  \par\vspace{8pt}\noindent\textbf{ملاحظة:}\space
+}{%
+  \par\vspace{8pt}
+}
 
-% Simple note box with left border - Compact version
-\newmdenv[
-  linecolor=accentcolor,
-  linewidth=2pt,
-  leftline=true,
-  rightline=false,
-  topline=false,
-  bottomline=false,
-  innerleftmargin=10pt,              % Reduced from 12pt
-  innerrightmargin=10pt,             % Reduced from 12pt
-  innertopmargin=8pt,                % Reduced from 10pt
-  innerbottommargin=8pt,             % Reduced from 10pt
-  skipabove=8pt plus 2pt minus 1pt,  % Reduced from 12pt
-  skipbelow=8pt plus 2pt minus 1pt   % Reduced from 12pt
-]{notebox}
-
-% Story box environment - Compact
+% Story box environment
 \newenvironment{storybox}{%
-  \par\vspace{8pt plus 2pt minus 1pt}%  % Reduced from 12pt
-  \noindent\hspace{0pt}%
-  \begin{minipage}[t]{0.96\linewidth}%   % Slightly wider
-  \textcolor{storyborder}{\rule[-2pt]{3pt}{1.1em}}\hspace{8pt}%  % Thinner rule
+  \par\vspace{8pt}\noindent\textbf{من الواقع:}\space\itshape
 }{%
-  \end{minipage}%
-  \par\vspace{8pt plus 2pt minus 1pt}%   % Reduced from 12pt
+  \par\vspace{8pt}
 }
 
-% Tip box environment - Compact
+% Tip box environment
 \newenvironment{tipbox}{%
-  \par\vspace{8pt plus 2pt minus 1pt}%
-  \noindent\hspace{0pt}%
-  \begin{minipage}[t]{0.96\linewidth}%
-  \textcolor{tipborder}{\rule[-2pt]{3pt}{1.1em}}\hspace{8pt}%
+  \par\vspace{8pt}\noindent\textbf{تلميح:}\space
 }{%
-  \end{minipage}%
-  \par\vspace{8pt plus 2pt minus 1pt}%
+  \par\vspace{8pt}
 }
 
-% Warning box environment - Compact
+% Warning box environment
 \newenvironment{warnbox}{%
-  \par\vspace{8pt plus 2pt minus 1pt}%
-  \noindent\hspace{0pt}%
-  \begin{minipage}[t]{0.96\linewidth}%
-  \textcolor{warnborder}{\rule[-2pt]{3pt}{1.1em}}\hspace{8pt}%
+  \par\vspace{8pt}\noindent\textbf{تحذير:}\space
 }{%
-  \end{minipage}%
-  \par\vspace{8pt plus 2pt minus 1pt}%
+  \par\vspace{8pt}
 }
 
-% Scenario box environment - Compact
+% Scenario box environment
 \newenvironment{scenariobox}{%
-  \par\vspace{6pt plus 1pt minus 1pt}%   % Reduced from 10pt
-  \noindent\hspace{0pt}%
-  \begin{minipage}[t]{0.96\linewidth}%
-  \textcolor{scenarioborder}{\rule[-2pt]{3pt}{1.1em}}\hspace{8pt}%
+  \par\vspace{6pt}\noindent\textbf{سيناريو:}\space
 }{%
-  \end{minipage}%
-  \par\vspace{6pt plus 1pt minus 1pt}%   % Reduced from 10pt
+  \par\vspace{6pt}
+}
+
+% Special box environment (with title)
+\newenvironment{specialbox}[1]{%
+  \par\vspace{10pt}\noindent\textbf{#1}\par
+}{%
+  \par\vspace{6pt}
+}
+
+% Warning box environment (long)
+\newenvironment{warningbox}{%
+  \par\vspace{10pt}\noindent\textbf{تنبيه مهم:}\par
+}{%
+  \par\vspace{6pt}
 }
 
 % ═══════════════════════════════════════════════════════════════════════════
-% 13. HELPER COMMANDS
+% 13. HELPER COMMANDS — SIMPLIFIED
 % ═══════════════════════════════════════════════════════════════════════════
 
-% Tight list for markdown compatibility - More compact
+% Tight list for markdown compatibility
 \providecommand{\tightlist}{%
-  \setlength{\itemsep}{2pt}\setlength{\parskip}{1pt}%  % More compact
+  \setlength{\itemsep}{2pt}\setlength{\parskip}{1pt}%
 }
 
-% Decorative section break - Compact
+% Decorative section break - REMOVED (Just space)
 \newcommand{\sectionbreak}{%
-  \par\vspace{10pt plus 2pt minus 1pt}%  % Reduced from 14pt
-  \noindent\hfil\textcolor{accentcolor}{\rule{0.2\textwidth}{0.5pt}}\hfil%  % Shorter rule
-  \par\vspace{10pt plus 2pt minus 1pt}%  % Reduced from 14pt
+  \par\vspace{14pt}
 }
 
-% Visual separator - Compact
+% Visual ornament - REMOVED (Just space)
 \newcommand{\ornamentbreak}{%
-  \par\vspace{8pt plus 1pt minus 1pt}%   % Reduced from 12pt
-  \noindent\hfil{\textcolor{accentcolor}{* * *}}\hfil%
-  \par\vspace{8pt plus 1pt minus 1pt}%   % Reduced from 12pt
+  \par\vspace{12pt}
 }
 
 % ═══════════════════════════════════════════════════════════════════════════
@@ -413,15 +364,19 @@
 % ═══════════════════════════════════════════════════════════════════════════
 
 % Ensure proper RTL layout
-\setlength{\footnotemargin}{0.8em}
+% \setlength{\footnotemargin}{0.8em}
 
-% Optimize for XeLaTeX
-\XeTeXlinebreaklocale "ar"          % Arabic line breaking rules
-\XeTeXlinebreakskip = 0pt plus 1pt  % Allow some flexibility in line breaks
+% Optimize for LuaLaTeX
+% \XeTeXlinebreaklocale "ar"          % Removed: XeTeX specific
+% \XeTeXlinebreakskip = 0pt plus 1pt  % Removed: XeTeX specific
+
+% LuaLaTeX uses HarfBuzz by default with fontspec, so Arabic shaping should work out of the box.
+% Ensure microtype settings are compatible (already set to 'final' and compatible defaults).
+\usepackage{luacode} % Good to have for LuaLaTeX power if needed
 
 % PDF compression for smaller file size
-\pdfcompresslevel=9
-\pdfobjcompresslevel=3
+% \pdfcompresslevel=9
+% \pdfobjcompresslevel=3
 
 % ═══════════════════════════════════════════════════════════════════════════
 % END OF PREAMBLE
