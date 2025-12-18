@@ -7,16 +7,16 @@
 % 1. PAPER SIZE & GEOMETRY — B5 with Golden Ratio Margins
 % ═══════════════════════════════════════════════════════════════════════════
 \usepackage[
-  b5paper,                    % B5 format (176 x 250 mm)
-  top=25mm,                   % Top margin
-  bottom=25mm,                % Bottom margin
-  inner=25mm,                 % Inner margin (binding side)
-  outer=20mm,                 % Outer margin (slightly smaller - golden ratio inspired)
-  headheight=14pt,            % Header height
-  headsep=8mm,                % Space between header and text
-  footskip=10mm,              % Space for footer
-  marginparwidth=15mm,        % Margin notes width
-  marginparsep=3mm            % Space to margin notes
+  b5paper,
+  top=25mm,
+  bottom=25mm,
+  inner=25mm,
+  outer=20mm,
+  headheight=22pt,
+  headsep=8mm,
+  footskip=10mm,
+  marginparwidth=15mm,
+  marginparsep=3mm
 ]{geometry}
 
 % ═══════════════════════════════════════════════════════════════════════════
@@ -24,33 +24,35 @@
 % ═══════════════════════════════════════════════════════════════════════════
 % Note: microtype has limited support for RTL, but we enable what works
 \usepackage[
-  activate={true,nocompatibility},  % Activate protrusion and expansion
-  final,                            % Enable in final mode
-  tracking=false,                   % Disable tracking (spacing issues with Arabic)
-  kerning=false,                    % Disable kerning (not needed for Arabic)
-  % spacing=true,                     % Enable spacing adjustments (disabled for LuaLaTeX)
-  factor=1100,                      % Protrusion factor (110%)
-  stretch=20,                       % Font expansion: stretch by 2%
-  shrink=20                         % Font expansion: shrink by 2% (helps fitting)
+  activate={true,nocompatibility},
+  final,
+  tracking=false,
+  kerning=false,
+  factor=1100,
+  stretch=20,
+  shrink=20
 ]{microtype}
 
-% Fine-tune microtype settings for better paragraph fitting
-\microtypecontext{spacing=nonfrench}
-
 % ═══════════════════════════════════════════════════════════════════════════
-% 3. COLORS — Professional Color Palette
+% 3. COLORS — Sophisticated Professional Palette
 % ═══════════════════════════════════════════════════════════════════════════
 \usepackage{xcolor}
-\definecolor{chaptercolor}{RGB}{25,55,85}       % Deep blue for chapters
-\definecolor{sectioncolor}{RGB}{35,70,105}      % Medium blue for sections
-\definecolor{accentcolor}{RGB}{60,90,120}       % Accent color
-\definecolor{rulecolor}{RGB}{100,120,140}       % Decorative rules
+\definecolor{chaptercolor}{RGB}{20,50,80}         % Deep navy blue for chapters
+\definecolor{sectioncolor}{RGB}{30,65,100}        % Rich blue for sections
+\definecolor{accentcolor}{RGB}{139,69,19}         % Elegant brown accent
+\definecolor{rulecolor}{RGB}{180,160,140}         % Warm decorative rules
+\definecolor{tableheader}{RGB}{245,243,240}       % Warm cream for table headers
+\definecolor{tipborder}{RGB}{30,65,100}           % Used for checkmarks in tables
+\definecolor{ornamentcolor}{RGB}{160,140,120}     % Decorative ornaments
+\definecolor{quoteback}{RGB}{250,248,245}         % Light cream for quotes
+\newcommand{\tableheadercolor}{\rowcolor{tableheader}}
+
 
 % ═══════════════════════════════════════════════════════════════════════════
 % 4. FONTS & TYPOGRAPHY — Professional RTL Arabic Setup
 % ═══════════════════════════════════════════════════════════════════════════
 \usepackage{fontspec}
-\usepackage[bidi=basic, layout=sectionsingroup]{babel}
+\usepackage[bidi=default, layout=sectionsingroup]{babel}
 \babelprovide[import, main, mapdigits]{arabic}
 \babelprovide[import]{english}
 
@@ -86,28 +88,26 @@
 
 % === Page Breaking Control ===
 \raggedbottom                       % Allow variable page heights (better than stretching)
-\sloppypar                          % Allow slightly looser spacing to avoid overfull boxes
 
 % === Emergency Stretch — Allow paragraphs to stretch/shrink ===
-\emergencystretch=3em               % Maximum emergency stretch (helps avoid overfull boxes)
-\tolerance=9999                     % Very high tolerance for line breaking
-\hbadness=9999                      % Don't warn about underfull hboxes
-\vbadness=9999                      % Don't warn about underfull vboxes
+\emergencystretch=2.5em             % Emergency stretch (helps avoid overfull boxes)
+\tolerance=2000                     % Moderate tolerance for better justification
+\hbadness=2000                      % Reasonable warning threshold
+\vbadness=2000                      % Reasonable warning threshold
 
 % === Flexible Spacing for Better Page Breaks — PROFESSIONAL ===
-\setlength{\parskip}{6pt plus 2pt minus 1pt}    % Balanced paragraph spacing
-\setlength{\parindent}{1.5em}                    % Professional paragraph indent
+\setlength{\parskip}{5pt plus 3pt minus 2pt}    % More flexible paragraph spacing
+\setlength{\parindent}{1.2em}                    % Slightly smaller indent for B5
 
 % === Line Spacing — Professional for B5 ===
-\linespread{1.18}                   % Slightly increased for better readability
-                                    % Professional publishing standard
+\linespread{1.15}                   % Slightly tighter for better page utilization
 
 % === Flexible Vertical Spacing — PROFESSIONAL ===
-\setlength{\topskip}{10pt plus 2pt minus 1pt}   % Standard top skip
-\setlength{\parskip}{6pt plus 2pt minus 1pt}    % Consistent paragraph spacing
+\setlength{\topskip}{10pt plus 3pt minus 2pt}   % Flexible top skip
+\setlength{\partopsep}{0pt plus 1pt}            % Flexible list spacing
 
 % === Prevent Page Breaks After Headings (Sticky Headings) ===
-\usepackage{needspace}              % For \needspace command
+% Use \nopagebreak and \samepage instead of needspace for XeLaTeX compatibility
 
 % ═══════════════════════════════════════════════════════════════════════════
 % 6. ADVANCED SQUEEZE COMMANDS — Font Shrinking for Tight Fitting
@@ -144,63 +144,68 @@
 \usepackage{titlesec}
 \usepackage{titletoc}
 
-% === CHAPTER FORMAT — Publisher Quality Opening Page ===
+% === CHAPTER FORMAT — Elegant Publisher Quality Opening Page ===
 \titleformat{\chapter}[display]
   {\normalfont\centering}
-  {% Chapter number - elegant large number
-    \vspace*{2cm}%                   % Generous top space for chapter opening
-    \textcolor{chaptercolor!30}{%
-      \fontsize{72}{80}\selectfont\bfseries\arabic{chapter}%  % Large, light number
+  {% Chapter number with decorative frame
+    \vspace*{1.5cm}%
+    {\textcolor{ornamentcolor}{— — —}}\\[0.6cm]%
+    \textcolor{chaptercolor!25}{%
+      \fontsize{80}{90}\selectfont\bfseries\arabic{chapter}%
     }%
+    \\[0.4cm]%
+    {\textcolor{ornamentcolor}{— — —}}%
   }
   {0pt}
-  {% Chapter title - prominent and clear
-    \vspace{0.8cm}%                  % Good spacing after number
-    \fontsize{22}{28}\selectfont\bfseries\textcolor{chaptercolor}%  % Clear title
+  {% Chapter title
+    \vspace{0.6cm}%
+    \fontsize{24}{30}\selectfont\bfseries\textcolor{chaptercolor}%
   }
-  [% After chapter title - decorative element
-    \vspace{0.5cm}%
-    \textcolor{rulecolor}{\rule{0.3\textwidth}{1pt}}%  % Elegant rule
-    \vspace{1.2cm}%                  % Breathing room before content
+  [% After chapter title - elegant decorative element
+    \vspace{0.6cm}%
+    {\textcolor{rulecolor}{\rule{0.4\textwidth}{0.8pt}}}%
+    \vspace{1.5cm}%
   ]
 
-% Chapter spacing - professional opening page
+% Chapter spacing
 \titlespacing*{\chapter}
-  {0pt}                             % Left margin
-  {0pt}                             % No extra space before (chapter starts fresh page)
-  {30pt plus 10pt minus 5pt}        % Space after - generous for opening
+  {0pt}
+  {0pt}
+  {25pt plus 8pt minus 5pt}
 
-% === SECTION FORMAT — Clean Standard ===
+% === SECTION FORMAT — Elegant with subtle decoration ===
 \titleformat{\section}
-  {\normalfont\fontsize{15}{19}\selectfont\bfseries\color{sectioncolor}}
+  {\normalfont\fontsize{16}{20}\selectfont\bfseries\color{sectioncolor}}
   {}
   {0pt}
   {}
+  [\vspace{2pt}{\textcolor{rulecolor!60}{\rule{0.15\textwidth}{0.5pt}}}]
 
 \titlespacing*{\section}
   {0pt}
-  {10pt plus 2pt minus 2pt}
-  {6pt plus 1pt minus 1pt}
+  {14pt plus 3pt minus 2pt}
+  {8pt plus 2pt minus 1pt}
 
-% === SUBSECTION FORMAT — Clean Standard ===
+% === SUBSECTION FORMAT — Clean and refined ===
 \titleformat{\subsection}
-  {\normalfont\fontsize{13}{16}\selectfont\bfseries\color{black!85}}
+  {\normalfont\fontsize{13}{17}\selectfont\bfseries\color{chaptercolor!80}}
   {}
   {0pt}
   {}
 
 \titlespacing*{\subsection}
   {0pt}
-  {8pt plus 2pt minus 2pt}
-  {4pt plus 1pt minus 1pt}
+  {10pt plus 2pt minus 2pt}
+  {5pt plus 1pt minus 1pt}
 
 % === Prevent Heading Orphans ===
-\newcommand{\chapternobreak}{\needspace{8\baselineskip}}
-\newcommand{\sectionnobreak}{\needspace{4\baselineskip}}
-\newcommand{\subsectionnobreak}{\needspace{3\baselineskip}}
+% Using nopagebreak instead of needspace for XeLaTeX compatibility
+\newcommand{\chapternobreak}{\nopagebreak[4]}
+\newcommand{\sectionnobreak}{\nopagebreak[4]}
+\newcommand{\subsectionnobreak}{\nopagebreak[3]}
 
 \let\oldchapter\chapter
-\renewcommand{\chapter}{\clearpage\chapternobreak\oldchapter}
+\renewcommand{\chapter}{\clearpage\oldchapter}
 
 \let\oldsection\section
 \renewcommand{\section}{\sectionnobreak\oldsection}
@@ -209,7 +214,7 @@
 \renewcommand{\subsection}{\subsectionnobreak\oldsubsection}
 
 % ═══════════════════════════════════════════════════════════════════════════
-% 8. GRAPHICS & TABLES — Standard
+% 8. GRAPHICS & TABLES — Elegant Professional Styling
 % ═══════════════════════════════════════════════════════════════════════════
 \usepackage{graphicx}
 \usepackage{booktabs}
@@ -219,50 +224,56 @@
 \usepackage{tabularx}
 \usepackage{multirow}
 \usepackage{colortbl}
+\usepackage{makecell}
 \usepackage{amssymb}
 
-% Standard Table Settings
-\renewcommand{\arraystretch}{1.2}
+% Elegant Table Settings
+\renewcommand{\arraystretch}{1.35}
+\setlength{\tabcolsep}{6pt}
+
+% Professional booktabs styling
+\renewcommand{\toprule}{\specialrule{0.8pt}{0pt}{4pt}}
+\renewcommand{\midrule}{\specialrule{0.4pt}{3pt}{3pt}}
+\renewcommand{\bottomrule}{\specialrule{0.8pt}{4pt}{0pt}}
 
 % ═══════════════════════════════════════════════════════════════════════════
-% 9. LISTS — Standard
+% 9. LISTS — Elegant Professional Styling
 % ═══════════════════════════════════════════════════════════════════════════
 \usepackage{enumitem}
-% Reset to mostly standard, just slightly tighter for B5
-\setlist{nosep} % Compact lists
-\setlist[itemize]{leftmargin=*}
-\setlist[enumerate]{leftmargin=*}
+
+% Compact lists with elegant styling
+\setlist{nosep, topsep=4pt, partopsep=2pt}
+\setlist[itemize]{leftmargin=1.2em, label={\textcolor{accentcolor}{—}}}
+\setlist[itemize,2]{label={\textcolor{ornamentcolor}{·}}}
+\setlist[enumerate]{leftmargin=1.5em}
+\setlist[enumerate,1]{label={\textcolor{chaptercolor}{\arabic*.}}}
+\setlist[enumerate,2]{label={\textcolor{sectioncolor}{\alph*.}}}
 
 % ═══════════════════════════════════════════════════════════════════════════
-% 10. HEADERS & FOOTERS — Professional Page Headers
+% 10. HEADERS & FOOTERS — Elegant Professional Page Headers
 % ═══════════════════════════════════════════════════════════════════════════
 \usepackage{fancyhdr}
 
 \pagestyle{fancy}
 \fancyhf{}
 
-% In RTL Context (Arabic):
-% Even pages are on the RIGHT. Outer edge is RIGHT. Inner edge is LEFT.
-% Odd pages are on the LEFT. Outer edge is LEFT. Inner edge is RIGHT.
+% Elegant header rule
+\renewcommand{\headrule}{\vspace{-4pt}\textcolor{rulecolor!50}{\rule{\textwidth}{0.4pt}}}
 
-% Page Numbers on Outer Edges:
-% RE (Right Even) -> Outer
-% LO (Left Odd)   -> Outer
-\fancyhead[RE,LO]{\small\bfseries\thepage}
+% Page Numbers with decorative elements on Outer Edges
+\fancyhead[RE,LO]{\textcolor{chaptercolor}{\small\bfseries— \thepage{} —}}
 
-% Chapter/Section Info on Inner Edges:
-% LE (Left Even)  -> Inner -> Chapter
-% RO (Right Odd)  -> Inner -> Section
-\fancyhead[LE]{\small\nouppercase{\leftmark}}           % Chapter on even pages (Inner)
-\fancyhead[RO]{\small\nouppercase{\rightmark}}          % Section on odd pages (Inner)
+% Chapter/Section Info on Inner Edges with elegant styling
+\fancyhead[LE]{\small\textcolor{chaptercolor!70}{\nouppercase{\leftmark}}}
+\fancyhead[RO]{\small\textcolor{sectioncolor!70}{\nouppercase{\rightmark}}}
 
-\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 
-% Plain style for chapter pages
+% Plain style for chapter opening pages - elegant centered number
 \fancypagestyle{plain}{
   \fancyhf{}
-  \fancyfoot[C]{\small\thepage} % Centered page number on chapter start pages is standard
+  \fancyfoot[C]{\textcolor{chaptercolor}{\small— \thepage{} —}}
   \renewcommand{\headrulewidth}{0pt}
 }
 
@@ -286,77 +297,126 @@
 \usepackage{bookmark}
 
 % ═══════════════════════════════════════════════════════════════════════════
-% 12. SPECIAL BOXES & ENVIRONMENTS
-% ═══════════════════════════════════════════════════════════════════════════
-% 12. SPECIAL BOXES & ENVIRONMENTS — SIMPLIFIED
+% 12. SPECIAL BOXES & ENVIRONMENTS — Elegant Professional Design
 % ═══════════════════════════════════════════════════════════════════════════
 
-% Simple note box
-\newenvironment{notebox}{%
-  \par\vspace{8pt}\noindent\textbf{ملاحظة:}\space
-}{%
-  \par\vspace{8pt}
+% Load tcolorbox for beautiful boxes
+\usepackage[most]{tcolorbox}
+
+% Elegant note box
+\newtcolorbox{notebox}{
+  enhanced,
+  colback=quoteback,
+  colframe=rulecolor!50,
+  boxrule=0.5pt,
+  arc=2pt,
+  left=8pt, right=8pt, top=6pt, bottom=6pt,
+  before skip=10pt, after skip=10pt,
+  fonttitle=\bfseries\color{chaptercolor},
+  title=ملاحظة
 }
 
-% Story box environment
-\newenvironment{storybox}{%
-  \par\vspace{8pt}\noindent\textbf{من الواقع:}\space\itshape
-}{%
-  \par\vspace{8pt}
+% Elegant story/quote box
+\newtcolorbox{storybox}{
+  enhanced,
+  colback=quoteback,
+  colframe=accentcolor!40,
+  boxrule=0pt,
+  leftrule=3pt,
+  arc=0pt,
+  left=12pt, right=8pt, top=8pt, bottom=8pt,
+  before skip=12pt, after skip=12pt,
+  fontupper=\itshape
 }
 
-% Tip box environment
-\newenvironment{tipbox}{%
-  \par\vspace{8pt}\noindent\textbf{تلميح:}\space
-}{%
-  \par\vspace{8pt}
+% Elegant tip box
+\newtcolorbox{tipbox}{
+  enhanced,
+  colback=tableheader,
+  colframe=sectioncolor!30,
+  boxrule=0.5pt,
+  arc=2pt,
+  left=8pt, right=8pt, top=6pt, bottom=6pt,
+  before skip=10pt, after skip=10pt,
+  fonttitle=\bfseries\color{sectioncolor},
+  title=تلميح
 }
 
-% Warning box environment
-\newenvironment{warnbox}{%
-  \par\vspace{8pt}\noindent\textbf{تحذير:}\space
-}{%
-  \par\vspace{8pt}
+% Warning box with emphasis
+\newtcolorbox{warnbox}{
+  enhanced,
+  colback=red!3,
+  colframe=red!40,
+  boxrule=0.5pt,
+  arc=2pt,
+  left=8pt, right=8pt, top=6pt, bottom=6pt,
+  before skip=10pt, after skip=10pt,
+  fonttitle=\bfseries\color{red!70!black},
+  title=تحذير
 }
 
-% Scenario box environment
+% Scenario box
 \newenvironment{scenariobox}{%
-  \par\vspace{6pt}\noindent\textbf{سيناريو:}\space
+  \par\vspace{8pt}\noindent{\bfseries\textcolor{chaptercolor}{سيناريو:}}\space
 }{%
-  \par\vspace{6pt}
+  \par\vspace{8pt}
 }
 
 % Special box environment (with title)
 \newenvironment{specialbox}[1]{%
-  \par\vspace{10pt}\noindent\textbf{#1}\par
+  \par\vspace{10pt}\noindent{\bfseries\textcolor{sectioncolor}{#1}}\par\vspace{4pt}
 }{%
-  \par\vspace{6pt}
+  \par\vspace{8pt}
 }
 
 % Warning box environment (long)
 \newenvironment{warningbox}{%
-  \par\vspace{10pt}\noindent\textbf{تنبيه مهم:}\par
+  \par\vspace{10pt}\noindent{\bfseries\textcolor{red!70!black}{تنبيه مهم:}}\par\vspace{4pt}
 }{%
-  \par\vspace{6pt}
+  \par\vspace{8pt}
 }
 
 % ═══════════════════════════════════════════════════════════════════════════
-% 13. HELPER COMMANDS — SIMPLIFIED
+% 13. HELPER COMMANDS — Elegant Decorative Elements
 % ═══════════════════════════════════════════════════════════════════════════
 
 % Tight list for markdown compatibility
 \providecommand{\tightlist}{%
-  \setlength{\itemsep}{2pt}\setlength{\parskip}{1pt}%
+  \setlength{\itemsep}{3pt}\setlength{\parskip}{2pt}%
 }
 
-% Decorative section break - REMOVED (Just space)
+% Elegant decorative section break with ornament
 \newcommand{\sectionbreak}{%
-  \par\vspace{14pt}
+  \par\vspace{12pt}%
+  \begin{center}%
+    \textcolor{ornamentcolor}{$\diamond$\quad$\diamond$\quad$\diamond$}%
+  \end{center}%
+  \vspace{10pt}%
 }
 
-% Visual ornament - REMOVED (Just space)
+% Visual ornament break
 \newcommand{\ornamentbreak}{%
-  \par\vspace{12pt}
+  \par\vspace{10pt}%
+  \begin{center}%
+    \textcolor{rulecolor!60}{\rule{0.2\textwidth}{0.4pt}}%
+  \end{center}%
+  \vspace{8pt}%
+}
+
+% Elegant horizontal rule
+\newcommand{\eleganthrule}{%
+  \par\vspace{8pt}%
+  {\centering\textcolor{rulecolor!50}{\rule{0.5\textwidth}{0.3pt}}\par}%
+  \vspace{8pt}%
+}
+
+% Chapter end ornament
+\newcommand{\chapterend}{%
+  \vspace{20pt}%
+  \begin{center}%
+    \textcolor{ornamentcolor}{— $\diamond$ —}%
+  \end{center}%
+  \vspace{10pt}%
 }
 
 % ═══════════════════════════════════════════════════════════════════════════
@@ -370,9 +430,7 @@
 % \XeTeXlinebreaklocale "ar"          % Removed: XeTeX specific
 % \XeTeXlinebreakskip = 0pt plus 1pt  % Removed: XeTeX specific
 
-% LuaLaTeX uses HarfBuzz by default with fontspec, so Arabic shaping should work out of the box.
-% Ensure microtype settings are compatible (already set to 'final' and compatible defaults).
-\usepackage{luacode} % Good to have for LuaLaTeX power if needed
+% LuaLaTeX/XeLaTeX uses HarfBuzz by default with fontspec, so Arabic shaping should work out of the box.\n% Ensure microtype settings are compatible (already set to 'final' and compatible defaults).
 
 % PDF compression for smaller file size
 % \pdfcompresslevel=9
