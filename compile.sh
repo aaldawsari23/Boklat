@@ -69,6 +69,12 @@ if [ -f "main.pdf" ]; then
         echo "⚠️  ملاحظة: هناك بعض التحذيرات عن امتلاء السطور (طبيعي في النصوص العربية)"
         echo "⚠️  Note: Some overfull hbox warnings (normal for Arabic text)"
     fi
+
+    # Check for color errors
+    if grep -q "Undefined color" main.log; then
+        echo "⚠️  تحذير: هناك ألوان غير معرّفة - راجع COLOR_REFERENCE.md"
+        echo "⚠️  Warning: Undefined colors found - check COLOR_REFERENCE.md"
+    fi
 else
     echo "========================================="
     echo "❌ فشل التجميع!"
