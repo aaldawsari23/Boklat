@@ -89,6 +89,11 @@
 % === Page Breaking Control ===
 \raggedbottom                       % Allow variable page heights (better than stretching)
 
+% === CRITICAL: Prevent breaks after headings ===
+\clubpenalties=3 10000 10000 5000   % Very strong penalties for club lines (first lines)
+\widowpenalties=3 10000 10000 5000  % Very strong penalties for widow lines (last lines)
+\displaywidowpenalties=3 10000 10000 5000  % Same for display math
+
 % === Emergency Stretch — Allow paragraphs to stretch/shrink ===
 \emergencystretch=2.5em             % Emergency stretch (helps avoid overfull boxes)
 \tolerance=2000                     % Moderate tolerance for better justification
@@ -198,20 +203,56 @@
   {10pt plus 2pt minus 2pt}
   {5pt plus 1pt minus 1pt}
 
-% === Prevent Heading Orphans ===
-% Using nopagebreak instead of needspace for XeLaTeX compatibility
-\newcommand{\chapternobreak}{\nopagebreak[4]}
-\newcommand{\sectionnobreak}{\nopagebreak[4]}
-\newcommand{\subsectionnobreak}{\nopagebreak[3]}
+% === CRITICAL: Prevent Heading Orphans and Page Breaks ===
+% Load needspace package for better control
+\usepackage{needspace}
 
+% Command to ensure minimum space before headings
+\newcommand{\chapternobreak}{\needspace{10\baselineskip}}
+\newcommand{\sectionnobreak}{\needspace{5\baselineskip}}
+\newcommand{\subsectionnobreak}{\needspace{4\baselineskip}}
+
+% Redefine chapter to ensure proper page breaks
 \let\oldchapter\chapter
-\renewcommand{\chapter}{\clearpage\oldchapter}
+\renewcommand{\chapter}{%
+  \clearpage%
+  \oldchapter%
+}
 
+% Redefine section to prevent orphans and ensure space
 \let\oldsection\section
-\renewcommand{\section}{\sectionnobreak\oldsection}
+\renewcommand{\section}{%
+  \needspace{5\baselineskip}%           % Ensure 5 lines available
+  \oldsection%
+  \nopagebreak[4]%                      % Strongly prevent break after title
+  \@afterheading%                       % Prevent break after heading
+}
 
+% Redefine subsection with same protections
 \let\oldsubsection\subsection
-\renewcommand{\subsection}{\subsectionnobreak\oldsubsection}
+\renewcommand{\subsection}{%
+  \needspace{4\baselineskip}%           % Ensure 4 lines available
+  \oldsubsection%
+  \nopagebreak[4]%                      % Strongly prevent break after title
+  \@afterheading%                       % Prevent break after heading
+}
+
+% Additional protection for starred sections (unnumbered)
+\let\oldsectionstar\section*
+\renewcommand{\section*}{%
+  \needspace{5\baselineskip}%
+  \oldsectionstar%
+  \nopagebreak[4]%
+  \@afterheading%
+}
+
+\let\oldsubsectionstar\subsection*
+\renewcommand{\subsection*}{%
+  \needspace{4\baselineskip}%
+  \oldsubsectionstar%
+  \nopagebreak[4]%
+  \@afterheading%
+}
 
 % ═══════════════════════════════════════════════════════════════════════════
 % 8. GRAPHICS & TABLES — Elegant Professional Styling
@@ -355,25 +396,34 @@
   title=تحذير
 }
 
-% Scenario box
+% Scenario box with page break protection
 \newenvironment{scenariobox}{%
-  \par\vspace{8pt}\noindent{\bfseries\textcolor{chaptercolor}{سيناريو:}}\space
+  \needspace{4\baselineskip}%
+  \nopagebreak[4]%
+  \par\vspace{8pt}\noindent{\bfseries\textcolor{chaptercolor}{سيناريو:}}\space%
+  \nopagebreak[4]%
 }{%
-  \par\vspace{8pt}
+  \par\vspace{8pt}%
 }
 
-% Special box environment (with title)
+% Special box environment (with title) - protected from page breaks
 \newenvironment{specialbox}[1]{%
-  \par\vspace{10pt}\noindent{\bfseries\textcolor{sectioncolor}{#1}}\par\vspace{4pt}
+  \needspace{4\baselineskip}%
+  \nopagebreak[4]%
+  \par\vspace{10pt}\noindent{\bfseries\textcolor{sectioncolor}{#1}}\par\vspace{4pt}%
+  \nopagebreak[4]%
 }{%
-  \par\vspace{8pt}
+  \par\vspace{8pt}%
 }
 
-% Warning box environment (long)
+% Warning box environment (long) - protected from page breaks
 \newenvironment{warningbox}{%
-  \par\vspace{10pt}\noindent{\bfseries\textcolor{red!70!black}{تنبيه مهم:}}\par\vspace{4pt}
+  \needspace{4\baselineskip}%
+  \nopagebreak[4]%
+  \par\vspace{10pt}\noindent{\bfseries\textcolor{red!70!black}{تنبيه مهم:}}\par\vspace{4pt}%
+  \nopagebreak[4]%
 }{%
-  \par\vspace{8pt}
+  \par\vspace{8pt}%
 }
 
 % ═══════════════════════════════════════════════════════════════════════════
@@ -383,6 +433,31 @@
 % Tight list for markdown compatibility
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{3pt}\setlength{\parskip}{2pt}%
+}
+
+% === CRITICAL: Commands to protect important text from page breaks ===
+% Use these to wrap important names, titles, or key phrases that should not be separated
+
+% Protect a title or heading-like text with following content
+\newcommand{\protectedtitle}[1]{%
+  \needspace{3\baselineskip}%
+  #1\nopagebreak[4]%
+}
+
+% Keep important name/title with its following description (at least 2 lines)
+\newcommand{\keepwithnext}[1]{%
+  #1\nopagebreak[4]%
+}
+
+% Start a protected block (prevents breaks for next few lines)
+\newcommand{\startprotected}{\par\needspace{4\baselineskip}\nopagebreak[4]}
+
+% Protect scenario boxes and similar important text blocks
+\newcommand{\protectblock}[1]{%
+  \needspace{5\baselineskip}%
+  \nopagebreak[4]%
+  #1%
+  \nopagebreak[3]%
 }
 
 % Elegant decorative section break with ornament
