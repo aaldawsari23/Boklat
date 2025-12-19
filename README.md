@@ -61,8 +61,8 @@ Boklat/
 │   ├── about-author.tex
 │   ├── reviewers.tex
 │   └── introduction.tex
-└── chapters/                  # الفصول (14 فصل + خاتمة + مسرد)
-    ├── ch01.tex - ch14.tex
+└── chapters/                  # الفصول (15 فصل + خاتمة + مسرد)
+    ├── ch01.tex - ch15.tex
     ├── conclusion.tex
     └── glossary.tex
 ```
