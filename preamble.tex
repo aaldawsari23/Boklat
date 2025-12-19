@@ -64,8 +64,9 @@
 
 % Amiri is an excellent choice for professional Arabic typography
 \babelfont[arabic]{rm}[
-  Scale=1.05,
-  Renderer=Harfbuzz
+  Scale=1.08,
+  Renderer=Harfbuzz,
+  Ligatures=TeX
 ]{Amiri}
 
 \babelfont[english]{rm}[
@@ -107,11 +108,11 @@
 \vbadness=2000                      % Reasonable warning threshold
 
 % === Flexible Spacing for Better Page Breaks — PROFESSIONAL ===
-\setlength{\parskip}{5pt plus 3pt minus 2pt}    % More flexible paragraph spacing
-\setlength{\parindent}{1.2em}                    % Slightly smaller indent for B5
+\setlength{\parskip}{6pt plus 3pt minus 2pt}    % Comfortable paragraph spacing
+\setlength{\parindent}{1.5em}                    % Standard indent for Arabic text
 
 % === Line Spacing — Professional for B5 ===
-\linespread{1.15}                   % Slightly tighter for better page utilization
+\linespread{1.18}                   % Comfortable reading spacing for Arabic text
 
 % === Flexible Vertical Spacing — PROFESSIONAL ===
 \setlength{\topskip}{10pt plus 3pt minus 2pt}   % Flexible top skip
@@ -160,20 +161,20 @@
   {\normalfont\centering}
   {% Chapter number with decorative frame
     \vspace*{1.5cm}%
-    {\textcolor{ornamentcolor}{— — —}}\\[0.6cm]%
+    {\textcolor{ornamentcolor}{— — —}}\\[1cm]%
     \textcolor{chaptercolor!25}{%
       \fontsize{80}{90}\selectfont\bfseries\arabic{chapter}%
     }%
-    \\[0.4cm]%
+    \\[0.8cm]%
     {\textcolor{ornamentcolor}{— — —}}%
   }
   {0pt}
   {% Chapter title
-    \vspace{0.6cm}%
+    \vspace{1cm}%
     \fontsize{24}{30}\selectfont\bfseries\textcolor{chaptercolor}%
   }
   [% After chapter title - elegant decorative element
-    \vspace{0.6cm}%
+    \vspace{0.8cm}%
     {\textcolor{rulecolor}{\rule{0.4\textwidth}{0.8pt}}}%
     \vspace{1.5cm}%
   ]
@@ -190,12 +191,12 @@
   {}
   {0pt}
   {}
-  [\vspace{2pt}{\textcolor{rulecolor!60}{\rule{0.15\textwidth}{0.5pt}}}]
+  [\vspace{6pt}{\textcolor{rulecolor!60}{\rule{0.15\textwidth}{0.5pt}}}]
 
 \titlespacing*{\section}
   {0pt}
-  {14pt plus 3pt minus 2pt}
-  {8pt plus 2pt minus 1pt}
+  {16pt plus 3pt minus 2pt}
+  {10pt plus 2pt minus 1pt}
 
 % === SUBSECTION FORMAT — Clean and refined ===
 \titleformat{\subsection}
