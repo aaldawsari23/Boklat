@@ -22,15 +22,13 @@
 % ═══════════════════════════════════════════════════════════════════════════
 % 2. MICROTYPE — Professional Microtypography (CRITICAL FOR QUALITY)
 % ═══════════════════════════════════════════════════════════════════════════
-% Note: microtype has limited support for RTL, but we enable what works
+% Note: microtype has limited support for RTL and XeTeX doesn't support expansion
 \usepackage[
-  activate={true,nocompatibility},
-  final,
+  protrusion=true,
+  expansion=false,
   tracking=false,
   kerning=false,
-  factor=1100,
-  stretch=20,
-  shrink=20
+  final
 ]{microtype}
 
 % ═══════════════════════════════════════════════════════════════════════════
@@ -244,22 +242,8 @@
   \@afterheading%                       % Prevent break after heading
 }
 
-% Additional protection for starred sections (unnumbered)
-\let\oldsectionstar\section*
-\renewcommand{\section*}{%
-  \needspace{5\baselineskip}%
-  \oldsectionstar%
-  \nopagebreak[4]%
-  \@afterheading%
-}
-
-\let\oldsubsectionstar\subsection*
-\renewcommand{\subsection*}{%
-  \needspace{4\baselineskip}%
-  \oldsubsectionstar%
-  \nopagebreak[4]%
-  \@afterheading%
-}
+% Note: Starred sections (*) protection is handled by titlesec package internally
+% Attempting to redefine them with \let causes errors in XeLaTeX
 
 % ═══════════════════════════════════════════════════════════════════════════
 % 8. GRAPHICS & TABLES — Elegant Professional Styling
