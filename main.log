@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Debian) (preloaded format=xelatex 2025.12.19)  20 DEC 2025 00:00
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Debian) (preloaded format=xelatex 2025.12.19)  20 DEC 2025 01:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3126,33 +3126,28 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\kernel@ifnextchar' on input line 143.
 
-! Too many }'s.
-l.145 ...خطوات - النظر للأمام، مش للأرض طول الوقت}
-                                                  
-You've closed more groups than you opened.
-Such booboos are generally harmless, so keep going.
-
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 149.
+(hyperref)                removing `\kernel@ifnextchar' on input line 156.
 
 [21] [22]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 199.
+(hyperref)                removing `\kernel@ifnextchar' on input line 206.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 201.
+(hyperref)                removing `\kernel@ifnextchar' on input line 208.
 
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 209.
-
-[23] [24]
+[23]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 257.
+(hyperref)                removing `\kernel@ifnextchar' on input line 216.
+
+[24]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\kernel@ifnextchar' on input line 264.
 
 Missing character: There is no ← (U+2190) in font Amiri Bold/OT:script=arab;lan
 guage=ARA;mapping=tex-text;!
@@ -3163,28 +3158,28 @@ guage=ARA;mapping=tex-text;!
 [25]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 306.
+(hyperref)                removing `\kernel@ifnextchar' on input line 313.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 308.
+(hyperref)                removing `\kernel@ifnextchar' on input line 315.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 316.
+(hyperref)                removing `\kernel@ifnextchar' on input line 323.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 326.
+(hyperref)                removing `\kernel@ifnextchar' on input line 333.
 
 [26]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 367.
+(hyperref)                removing `\kernel@ifnextchar' on input line 374.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 369.
+(hyperref)                removing `\kernel@ifnextchar' on input line 376.
 
 Missing character: There is no → (U+2192) in font Amiri Bold/OT:script=arab;lan
 guage=ARA;mapping=tex-text;!
@@ -3193,44 +3188,44 @@ guage=ARA;mapping=tex-text;!
 [27]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 377.
+(hyperref)                removing `\kernel@ifnextchar' on input line 384.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 436.
+(hyperref)                removing `\kernel@ifnextchar' on input line 443.
 
 [28]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 469.
+(hyperref)                removing `\kernel@ifnextchar' on input line 476.
 
 [29]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 471.
+(hyperref)                removing `\kernel@ifnextchar' on input line 478.
 
 Missing character: There is no → (U+2192) in font Amiri Regular/OT:script=arab;
 language=ARA;mapping=tex-text;!
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 483.
+(hyperref)                removing `\kernel@ifnextchar' on input line 490.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 495.
+(hyperref)                removing `\kernel@ifnextchar' on input line 502.
 
 [30]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 560.
+(hyperref)                removing `\kernel@ifnextchar' on input line 567.
 
 [31]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 580.
+(hyperref)                removing `\kernel@ifnextchar' on input line 587.
 
 [32]
-Underfull \hbox (badness 3590) in paragraph at lines 600--601
+Underfull \hbox (badness 3590) in paragraph at lines 607--608
 []\TU/Amiri(0)/m/n/12 ambulating stroke survivors. Archives of Physical Medicin
 e and[]
  []
@@ -3271,12 +3266,6 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\kernel@ifnextchar' on input line 71.
 
-! Too many }'s.
-l.73 ... طاقة شخص واحد بأمان [2]. في هذي الحالات:}
-                                                  
-You've closed more groups than you opened.
-Such booboos are generally harmless, so keep going.
-
 [38]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -3303,97 +3292,85 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\kernel@ifnextchar' on input line 164.
 
-! Too many }'s.
-l.166 ...خة شديدة - غباش في النظر - إغماء أحياناً}
-                                                  
-You've closed more groups than you opened.
-Such booboos are generally harmless, so keep going.
-
 [40]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 168.
+(hyperref)                removing `\kernel@ifnextchar' on input line 173.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 184.
+(hyperref)                removing `\kernel@ifnextchar' on input line 189.
 
 [41]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 186.
+(hyperref)                removing `\kernel@ifnextchar' on input line 191.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 202.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 204.
+(hyperref)                removing `\kernel@ifnextchar' on input line 207.
 
 [42]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 214.
+(hyperref)                removing `\kernel@ifnextchar' on input line 209.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 226.
+(hyperref)                removing `\kernel@ifnextchar' on input line 219.
 
 [43]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 228.
+(hyperref)                removing `\kernel@ifnextchar' on input line 231.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 232.
+(hyperref)                removing `\kernel@ifnextchar' on input line 233.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 236.
+(hyperref)                removing `\kernel@ifnextchar' on input line 237.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 246.
+(hyperref)                removing `\kernel@ifnextchar' on input line 241.
 
 [44]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 258.
+(hyperref)                removing `\kernel@ifnextchar' on input line 251.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 260.
-
-! Too many }'s.
-l.262 ...ين عندهم آلام ظهر مزمنة [4]. لتتجنب هذا:}
-                                                  
-You've closed more groups than you opened.
-Such booboos are generally harmless, so keep going.
+(hyperref)                removing `\kernel@ifnextchar' on input line 263.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 274.
+(hyperref)                removing `\kernel@ifnextchar' on input line 265.
 
 [45]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 302.
+(hyperref)                removing `\kernel@ifnextchar' on input line 279.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 304.
+(hyperref)                removing `\kernel@ifnextchar' on input line 307.
 
 [46]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 316.
+(hyperref)                removing `\kernel@ifnextchar' on input line 309.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\kernel@ifnextchar' on input line 321.
 
 [47]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kernel@ifnextchar' on input line 324.
+(hyperref)                removing `\kernel@ifnextchar' on input line 329.
 
 ) (./chapters/ch04.tex [48]
 \bbl@ensure@arabic {باب} 4.
@@ -4276,15 +4253,6 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\kernel@ifnextchar' on input line 64.
 
-! Extra }, or forgotten \endgroup.
-l.74 ...قلة الحركة [8]. في هذه الحالات، قد يجتمع:}
-                                                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\kernel@ifnextchar' on input line 80.
@@ -4414,12 +4382,6 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\kernel@ifnextchar' on input line 421.
 
 [83]
-! Too many }'s.
-l.431 ...ج أسوأ على المدى البعيد [1][7][8]. لذلك:}
-                                                  
-You've closed more groups than you opened.
-Such booboos are generally harmless, so keep going.
-
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\kernel@ifnextchar' on input line 441.
@@ -6270,9 +6232,11 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
  )
-(\end occurred inside a group at level 1)
+(\end occurred inside a group at level 3)
 
-### simple group (level 1) entered at line 571 ({)
+### simple group (level 3) entered at line 589 ({)
+### simple group (level 2) entered at line 571 ({)
+### simple group (level 1) entered at line 376 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
  34945 strings out of 476869
@@ -6281,6 +6245,6 @@ Here is how much of TeX's memory you used:
  56194 multiletter control sequences out of 15000+600000
  565101 words of font info for 104 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 96i,15n,102p,1001b,2510s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 96i,15n,102p,1001b,3318s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on main.pdf (312 pages).
