@@ -217,33 +217,9 @@
 \newcommand{\sectionnobreak}{\needspace{5\baselineskip}}
 \newcommand{\subsectionnobreak}{\needspace{4\baselineskip}}
 
-% Redefine chapter to ensure proper page breaks
-\let\oldchapter\chapter
-\renewcommand{\chapter}{%
-  \clearpage%
-  \oldchapter%
-}
-
-% Redefine section to prevent orphans and ensure space
-\let\oldsection\section
-\renewcommand{\section}{%
-  \needspace{5\baselineskip}%           % Ensure 5 lines available
-  \oldsection%
-  \nopagebreak[4]%                      % Strongly prevent break after title
-  \@afterheading%                       % Prevent break after heading
-}
-
-% Redefine subsection with same protections
-\let\oldsubsection\subsection
-\renewcommand{\subsection}{%
-  \needspace{4\baselineskip}%           % Ensure 4 lines available
-  \oldsubsection%
-  \nopagebreak[4]%                      % Strongly prevent break after title
-  \@afterheading%                       % Prevent break after heading
-}
-
-% Note: Starred sections (*) protection is handled by titlesec package internally
-% Attempting to redefine them with \let causes errors in XeLaTeX
+% Note: Page break protection for sections is handled by titlesec package
+% The needspace package with chapter/section spacing settings provides sufficient protection
+% Redefining \section and \subsection can interfere with TOC generation
 
 % ═══════════════════════════════════════════════════════════════════════════
 % 8. GRAPHICS & TABLES — Elegant Professional Styling
