@@ -12,8 +12,8 @@
   bottom=25mm,
   inner=25mm,
   outer=20mm,
-  headheight=22pt,
-  headsep=8mm,
+  headheight=15mm,
+  headsep=6mm,
   footskip=10mm,
   marginparwidth=15mm,
   marginparsep=3mm
@@ -158,23 +158,23 @@
 \titleformat{\chapter}[display]
   {\normalfont\centering}
   {% Chapter number with decorative frame
-    \vspace*{1.5cm}%
-    {\textcolor{ornamentcolor}{— — —}}\\[1cm]%
+    \vspace*{1cm}%
+    {\textcolor{ornamentcolor}{— — —}}\\[0.6cm]%
     \textcolor{chaptercolor!25}{%
-      \fontsize{80}{90}\selectfont\bfseries\arabic{chapter}%
+      \fontsize{48}{54}\selectfont\bfseries\arabic{chapter}%
     }%
-    \\[0.8cm]%
+    \\[0.5cm]%
     {\textcolor{ornamentcolor}{— — —}}%
   }
   {0pt}
   {% Chapter title
-    \vspace{1cm}%
-    \fontsize{24}{30}\selectfont\bfseries\textcolor{chaptercolor}%
+    \vspace{0.6cm}%
+    \fontsize{18}{24}\selectfont\bfseries\textcolor{chaptercolor}%
   }
   [% After chapter title - elegant decorative element
-    \vspace{0.8cm}%
+    \vspace{0.5cm}%
     {\textcolor{rulecolor}{\rule{0.4\textwidth}{0.8pt}}}%
-    \vspace{1.5cm}%
+    \vspace{1cm}%
   ]
 
 % Chapter spacing
@@ -266,14 +266,14 @@
 \fancyhf{}
 
 % Elegant header rule
-\renewcommand{\headrule}{\vspace{-4pt}\textcolor{rulecolor!50}{\rule{\textwidth}{0.4pt}}}
+\renewcommand{\headrule}{\vspace{-2pt}\textcolor{rulecolor!50}{\rule{\textwidth}{0.4pt}}}
 
 % Page Numbers with decorative elements on Outer Edges
-\fancyhead[RE,LO]{\textcolor{chaptercolor}{\small\bfseries— \thepage{} —}}
+\fancyhead[RE,LO]{\textcolor{chaptercolor}{\normalsize\bfseries— \thepage{} —}}
 
 % Chapter/Section Info on Inner Edges with elegant styling
-\fancyhead[LE]{\small\textcolor{chaptercolor!70}{\nouppercase{\leftmark}}}
-\fancyhead[RO]{\small\textcolor{sectioncolor!70}{\nouppercase{\rightmark}}}
+\fancyhead[LE]{\normalsize\textcolor{chaptercolor}{\nouppercase{\leftmark}}}
+\fancyhead[RO]{\normalsize\textcolor{sectioncolor}{\nouppercase{\rightmark}}}
 
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
